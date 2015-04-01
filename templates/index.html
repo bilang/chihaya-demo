@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script>
+     function refresh() {
+       window.location.reload(true);
+       setTimeout(refresh, 5000);
+     }
+     setTimeout(refresh, 5000);
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Clients</h1>
+      <div class="row">
+        {% for key, value in clients.iteritems() %}
+          <div class="col-md-2">
+            <div class="panel panel-default">
+              <div class="panel-heading">{{ key }}</div>
+              <div class="panel-body">
+                {{ value.progress }}%
+                {% if value.time %}
+                  ({{ value.time }}s)
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
